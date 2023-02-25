@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: beige;
+}
+
+.max-view-height {
+    height: 100vh;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+/*
+.hidden{  para ocultar la etiqueta de video cuando no esté en uso
+    opacity: 0%;
+}
+*/
+.contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   /* border: 1px solid black;*/
+    
+}
+
+#container-hornoJS {
+    position: relative;
+    width: 25%;
+    background-image: url(horno.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#container-hornoJS > video {
+    margin-top: 4px;
+    width: 100%;
+}
+
+#perilla-hornoJS {
+    position: absolute;
+    top: 11.4%;
+    left: 18.5%;
+    width: 7%;
+    height: 6.3%;
+    background-image: url(perilla.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#puerta-hornoJS{
+    position: absolute; /*p/poder mantenerlo dentro del container-hornoJS*/
+    top: 23%;
+    left: 8%;
+    width: 84%;
+    height: 54%;
+    /* background-color: red; */
+    opacity: 25%;
+}
