@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: rgb(137, 170, 104);
+    background-image: linear-gradient(to top, #d5dee7 0%, #c58791 0%, #a6d79e 100%);
 }
 
 .max-view-height {

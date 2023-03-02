@@ -22,11 +22,20 @@ function avanzarAnimacion(){
     //depende de lo q' tenga como parámetro, ingresa a determinado case
     switch (estadoHorno) { 
         case 'apagado':    //------------------------pasos q' quiero q' se ejecuten:
+            bloquearPuerta(true); //-----p/bloquear la puerta en los momentos en los q no queremos q el user interactue c/ el programa y resetee.
             reproducirSonido('audio_puerta', false);
             mostrarVideo();
             reproducirVideo('horno-abriendo-puerta')
-            estadoHorno = 'cocinando';
+            cuandoTerminaAvanzarA('cocinando');
             break;
+        
+        case 'cocinando':
+            reproducirVideo('horno-cocinando');
+            reproducirSonido('audio_timer', true);
+            cuandoTerminaAvanzarA('tarta-lista'); //p/q' corra automáticamente la animación
+            break;
+
+
     }
 }
 
@@ -50,5 +59,23 @@ function reproducirVideo(nombreVideo) {
     videoHornoActual.src = `${nombreVideo}.webm`;
     videoHornoActual.play();
 }
+
+//esta función se fija cuando termina el video, y apenas eso suceda, va a actualizar el estado con la funcion actualizarEstadoA()
+function cuandoTerminaAvanzarA(estado) {
+    videoHornoActual.onended = () => {
+        actualizarEstadoA(estado);
+        avanzarAnimacion();
+    }
+}
+
+
+function actualizarEstadoA(estado){
+    estadoHorno = estado;
+}
+
+function bloquearPuerta(traba) {
+    puertaBloqueada = traba; //---q' corra la animación solo si la puerta no está bloqueada.
+}
+
 
 }
